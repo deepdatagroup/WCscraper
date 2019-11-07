@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Jul 27 13:05:50 2018
-
 @author: JHON PARRA-PC
 """
 ###CODE TO SCRAP FROM FIFA WC BRAZIL 2014 ACHIVE FILE  
-### CELSIA
-### DATA SCIENTIST TEST
+
 
 import pandas as pd
 from bs4 import BeautifulSoup
