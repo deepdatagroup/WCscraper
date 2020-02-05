@@ -27,7 +27,7 @@ import re
 # AFTER FIRST ROUND, THERE MUST BE A WINNER SO THEY DETAIL OF HOW A TEAM WON IS LABELED AS mu-reasonwin
 #WCscrapper is a function that returns a pd.DataFrame with information from the world cup needed "placeyear": eg. WCscrapper(italy1990).
 
-def WCscrapper(placeyear):
+def WCscraper(placeyear):
     url_fifa="https://www.fifa.com/worldcup/archive/"+ placeyear +"/matches/index.html"
     page_raw = requests.get(url_fifa)
     page = BeautifulSoup(page_raw.text, 'html.parser')
@@ -74,10 +74,10 @@ def WCscrapper(placeyear):
 
     return dataWC
 
-WCscrapper("koreajapan2002") ##Example of how it works individually
+WCscraper("koreajapan2002") ##Example of how it works individually
 
 
-def RussiaScrapper(placeyear):
+def RussiaScraper(placeyear):
     url_fifa=placeyear
     page_raw = requests.get(url_fifa)
     page = BeautifulSoup(page_raw.text, 'html.parser')
@@ -128,7 +128,7 @@ def RussiaScrapper(placeyear):
     return dataWC
 
 ##SHOWS HOW IT RETRIEVES RUSSIA WC INFORMATION
-RussiaScrapper("https://www.fifa.com/worldcup/matches/?#groupphase")
+RussiaScraper("https://www.fifa.com/worldcup/matches/?#groupphase")
                
 ##APPLY FUNCTION TO A LIST OF WORLDCUPS
 
@@ -138,13 +138,13 @@ dataWC_ALL=pd.DataFrame()
 
 for i in range(len(wc_list)):
    if i==0:
-       dataWC_ALL=WCscrapper(wc_list['WC'][i])
+       dataWC_ALL=WCscraper(wc_list['WC'][i])
    else:
-       dataaux=WCscrapper(wc_list['WC'][i])
+       dataaux=WCscraper(wc_list['WC'][i])
        dataWC_ALL=dataWC_ALL.append(dataaux)
 
 ###ADDS RUSSIA 2018 INFO  
-dataWC_ALL=dataWC_ALL.append(RussiaScrapper("https://www.fifa.com/worldcup/matches/?#groupphase"))
+dataWC_ALL=dataWC_ALL.append(RussiaScraper("https://www.fifa.com/worldcup/matches/?#groupphase"))
 
 #REPLACE FEDERAL GERMANY FOR GERMANY (GER)
 dataWC_ALL['home'] = dataWC_ALL['home'].replace(['FRG'], 'GER')                                            
