@@ -2,7 +2,7 @@
 """
 @author: JHON PARRA-PC
 """
-###CODE TO SCRAP FROM FIFA WC BRAZIL 2014 ACHIVE FILE  
+###CODE TO SCRAP FROM FIFA WC BRAZIL 2014 
 
 
 import pandas as pd
